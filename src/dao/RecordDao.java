@@ -17,6 +17,7 @@ public class RecordDao {
 	private final String DISPLAY_TEAMS_RECORDS_QUERY = "SELECT * FROM season_records";
 	private final String DISPLAY_A_TEAM_RECORDS_QUERY = "SELECT * FROM season_records WHERE team_name = ?";
 	private final String ADD_A_TEAM_RECORD_QUERY = "INSERT INTO season_records(team_name, year, record) VALUES(?,?,?)";
+	private final String DELETE_A_TEAM_RECORD_QUERY = "DELETE FROM season_records WHERE team_name = ?";
 	 
 	
 	public RecordDao() {
@@ -55,6 +56,12 @@ public class RecordDao {
 		ps.executeUpdate();
 		
 		
+	}
+	
+	public void deleteTeamRecord(String team_name) throws SQLException {
+		PreparedStatement ps = connection.prepareStatement(DELETE_A_TEAM_RECORD_QUERY);
+		ps.setString(1, team_name);
+		ps.executeUpdate();
 	}
 
 }
