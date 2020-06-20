@@ -15,7 +15,8 @@ public class Menu {
 	private List<String> options = Arrays.asList(
 			"Display Team Records",
 			"Display a Team Record",
-			"Add a Team Record"
+			"Add a Team Record",
+			"Delete a Team Record"
 			);
 	
 	public void start() throws SQLException {
@@ -31,7 +32,8 @@ public class Menu {
 				displayRecord();
 			} else if (selection.equals("3")) {
 				addARecord();
-		
+			} else if (selection.equals("4")) {
+				deleteRecord();
 			}
 			
 			System.out.println("Press enter to continue.");
@@ -74,5 +76,10 @@ public class Menu {
 		
 	}
 	
+	private void deleteRecord() throws SQLException {
+		System.out.println("Enter Team Name to delete record:");
+		String string = scanner.nextLine();
+		recordDao.deleteTeamRecord(string);
+	}
 	
 }
