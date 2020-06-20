@@ -9,9 +9,7 @@ import java.util.List;
 
 import entity.Record;
 
-
 public class RecordDao {
-	
 	private Connection connection;
 	
 	private final String DISPLAY_TEAMS_RECORDS_QUERY = "SELECT * FROM season_records";
@@ -21,10 +19,12 @@ public class RecordDao {
 	 
 	
 	public RecordDao() {
-		connection = DBConnection.getConnection();
+		//System.out.println("RecordDao Constructor");
+		connection = DBconnection.getConnection();
 	}
 	
 	public List<Record> getRecords() throws SQLException {
+		//System.out.println("TEST THREE");
 		ResultSet rs = connection.prepareStatement(DISPLAY_TEAMS_RECORDS_QUERY).executeQuery();
 		List<Record> records = new ArrayList<Record>();
 		
@@ -65,3 +65,4 @@ public class RecordDao {
 	}
 
 }
+

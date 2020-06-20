@@ -15,12 +15,13 @@ public class DBconnection {
 	private DBconnection(Connection connection) {
 		this.connection = connection;
 	}
+	
 	public static Connection getConnection() {
 		if (instance == null) {
 			try {
 				connection = DriverManager.getConnection(connectionString, USERNAME, PASSWORD);
 				instance = new DBconnection(connection);
-				System.out.println("You are successfully connected!");
+				//System.out.println("You are successfully connected!");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -28,3 +29,5 @@ public class DBconnection {
 		return DBconnection.connection;
 	}
 }
+
+

@@ -9,16 +9,14 @@ import java.util.List;
 
 import entity.Team;
 
-
 public class TeamsDao {
-
-	private Connection connection;
+private Connection connection;
 	
 	private final String DISPLAY_TEAMS_QUERY = "select * from teams";
 	private final String DISPLAY_TEAM_QUERY = "select * from teams where team_name = ?";
 	private final String CREATE_TEAM_QUERY = "insert into teams(team_name, location) values(?,?)";
 	private final String UPDATE_TEAM_LOCATION_QUERY = "update teams set location = ? where team_name = ?";
-	private final String DELETE_TEAM_QUERY = "delete teams where team_name = ?";
+	private final String DELETE_TEAM_QUERY = "delete from teams where team_name = ?";
 	
 	public TeamsDao() {
 		connection = DBconnection.getConnection();
@@ -56,8 +54,8 @@ public class TeamsDao {
 	
 	public void updateTeamLocation(String team_name, String location) throws SQLException {
 		PreparedStatement ps = connection.prepareStatement(UPDATE_TEAM_LOCATION_QUERY);
-		ps.setString(1, team_name);
-		ps.setString(2, location);
+		ps.setString(1, location);
+		ps.setString(2, team_name);
 		ps.executeUpdate();
 	
 	}
@@ -71,3 +69,4 @@ public class TeamsDao {
 	
 	
 }
+

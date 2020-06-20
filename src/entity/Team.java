@@ -26,3 +26,4 @@ public class Team {
 		this.location = location;
 	}
 }
+
